@@ -1,6 +1,7 @@
+%% Create bezier curves with provided control points
 function [beziers] = createBeziers(curves)
 
-beziers = {};
+beziers = cell(numel(curves));
 for i = 1:numel(curves)
     p = curves{i};
     beziers{i} = @(t)evalBezier(p, t);
@@ -10,7 +11,6 @@ function [val] = evalBezier(p,t)
 
 n = size(p,1);
 m = length(t);
-T = zeros(n,n);
 val = zeros(m,2);
 X(:,1) = p(:,1);
 Y(:,1) = p(:,2);
